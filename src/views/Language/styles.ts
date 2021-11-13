@@ -6,25 +6,38 @@ export const SafeArea = styled.SafeAreaView`
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.Colors.WHITE}; ;
+  background-color: ${({ theme }) => theme.Colors.WHITE};
+  justify-content: center;
 `;
 
 export const ContainerHeader = styled.View`
-  flex: 0.3;
+  flex: 0.2;
   justify-content: center;
   align-items: center;
 `;
 
-export const TextLogin = styled.Text`
+export const TextTitle = styled.Text`
   color: ${({ theme }) => theme.Colors.BLUE};
   font-size: 55px;
 `;
 
-export const ContainerInputs = styled.View`
-  flex: 0.3;
+export const TextLabel = styled.Text`
+  color: ${({ theme }) => theme.Colors.TEXT};
+  font-size: 20px;
+`;
+
+export const ContainerListRadio = styled.View`
   justify-content: center;
+  margin-bottom: 5px;
+  align-items: flex-start;
+  margin-left: 30px;
+`;
+
+export const ContainerRadio = styled.View`
+  justify-content: center;
+  margin-bottom: 5px;
   align-items: center;
-  margin-top: 50px;
+  flex-direction: row;
 `;
 
 export const ButtonText = styled.Text`
