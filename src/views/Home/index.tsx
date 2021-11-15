@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { body, body2 } from './constants';
+import i18next from '~/i18n';
+
+import { body } from './constants';
 
 import * as S from './styles';
 
@@ -9,12 +11,10 @@ export function Home() {
     <S.SafeArea>
       <S.Container>
         <S.ContainerHeader>
-          <S.TextTitle>Quem Somos</S.TextTitle>
+          <S.TextTitle>{i18next.t('about_us')}</S.TextTitle>
         </S.ContainerHeader>
 
-        <S.TextBody>{body}</S.TextBody>
-
-        <S.TextBody>{body2}</S.TextBody>
+        <S.TextBody>{i18next.t('text_about_us')}</S.TextBody>
       </S.Container>
     </S.SafeArea>
   );

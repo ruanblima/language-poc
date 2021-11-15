@@ -2,6 +2,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import { RadioButton } from 'react-native-paper';
 
+import { ELanguage } from '~/@types/entities/Language';
 import { HOME_SCREEN } from '~/constants/routes';
 
 import * as S from './styles';
@@ -9,13 +10,13 @@ import * as S from './styles';
 type Props = NativeStackScreenProps<'LoginScreen'>;
 
 export function Language({ navigation }: Props) {
-  const [checked, setChecked] = useState('pt');
+  const [checked, setChecked] = useState<ELanguage>(ELanguage.pt);
 
   function handleLogin() {
     navigation.navigate(HOME_SCREEN);
   }
 
-  function selectLanguage(language: string) {
+  function selectLanguage(language: ELanguage) {
     setChecked(language);
   }
 
@@ -30,7 +31,7 @@ export function Language({ navigation }: Props) {
             <RadioButton
               value="pt"
               status={checked === 'pt' ? 'checked' : 'unchecked'}
-              onPress={() => selectLanguage('pt')}
+              onPress={() => selectLanguage(ELanguage.pt)}
             />
             <S.TextLabel>Português</S.TextLabel>
           </S.ContainerRadio>
@@ -39,7 +40,7 @@ export function Language({ navigation }: Props) {
             <RadioButton
               value="es"
               status={checked === 'es' ? 'checked' : 'unchecked'}
-              onPress={() => selectLanguage('es')}
+              onPress={() => selectLanguage(ELanguage.es)}
             />
             <S.TextLabel>Espanhol</S.TextLabel>
           </S.ContainerRadio>
@@ -48,7 +49,7 @@ export function Language({ navigation }: Props) {
             <RadioButton
               value="en"
               status={checked === 'en' ? 'checked' : 'unchecked'}
-              onPress={() => selectLanguage('en')}
+              onPress={() => selectLanguage(ELanguage.en)}
             />
             <S.TextLabel>Inglês</S.TextLabel>
           </S.ContainerRadio>
