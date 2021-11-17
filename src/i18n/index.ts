@@ -1,43 +1,43 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import i18next from 'i18next';
+import type { Resource } from 'i18next';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-import en from './en';
-import es from './es';
-import pt from './pt';
+import { enContent, enAcessibilityContent } from './locales/en';
+import { esContent, esAcessibilityContent } from './locales/es';
+import { ptContent, ptAcessibilityContent } from './locales/pt';
 
-async function getData() {
-  try {
-    const language: string | null = await AsyncStorage.getItem('@language');
-    if (language !== null) {
-      return language;
-    }
-    return 'pt';
-  } catch (e) {
-    return 'pt';
-  }
-}
-const language = getData();
+const languages = {
+  pt: 'pt',
+  en: 'en',
+  es: 'es',
+};
 
-i18next.init({
-  lng: 'en',
-  debug: true,
-  resources: {
-    en: {
-      translation: {
-        ...en,
-      },
-    },
-    es: {
-      translation: {
-        ...es,
-      },
-    },
-    pt: {
-      translation: {
-        ...pt,
-      },
-    },
+const namespaces = {
+  content: 'content',
+  accessibleContent: 'accessibleContent',
+};
+
+const resources: Resource = {
+  pt: {
+    content: ptContent,
+    accessibleContent: ptAcessibilityContent,
   },
+  en: {
+    content: enContent,
+    accessibleContent: enAcessibilityContent,
+  },
+  es: {
+    content: esContent,
+    accessibleContent: esAcessibilityContent,
+  },
+};
+
+i18n.use(initReactI18next).init({
+  resources,
+  ns: [namespaces.content, namespaces.accessibleContent],
+  defaultNS: namespaces.content,
+  lng: languages.pt,
+  fallbackLng: languages.pt,
 });
 
-export default i18next;
+export default i18n;
