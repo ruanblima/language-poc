@@ -1,11 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createContext, useContext } from 'use-context-selector';
 
 import { ELanguage } from '~/@types/entities/Language';
 
 interface LanguageContextProps {
   language: ELanguage;
+  toggleLanguage: (language: ELanguage) => void;
 }
 
 const LanguageContext = createContext<LanguageContextProps>(
@@ -19,7 +20,7 @@ const LanguageProvider: React.FC = ({ children }) => {
     await AsyncStorage.setItem('@language', newLanguage);
   }
   return (
-    <LanguageContext.Provider value={{ language }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
